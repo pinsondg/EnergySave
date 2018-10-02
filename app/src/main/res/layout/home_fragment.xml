@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@android:color/background_light">
+
+    <TextView
+        android:id="@+id/home_num_devices_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of Connected Devices"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:textSize="25dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/home_num_devices_title"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:id="@+id/home_num_devices" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/home_graph"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/home_num_devices"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
