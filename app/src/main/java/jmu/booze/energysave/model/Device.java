@@ -33,12 +33,11 @@ public class Device {
                 while ( true ) {
                     while (deviceOn) {
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(2000);
                         } catch (InterruptedException e) {
                             break;
                         }
                         if ( deviceOn ) {
-                            System.out.println("Changed!");
                             totalUsage += generateNewRandomUsage();
                             notifyListeners();
                         }

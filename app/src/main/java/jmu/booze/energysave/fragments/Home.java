@@ -52,7 +52,7 @@ public class Home extends Fragment {
         rootview = inflater.inflate(R.layout.home_fragment, container, false);
         ((TextView) rootview.findViewById(R.id.home_num_devices)).setText(
                 String.format("%d", DeviceCollection.getInstance().size()));
-        setUpGraph();
+        setUpGraph( " kW", R.id.home_graph);
         return rootview;
     }
 
@@ -62,8 +62,8 @@ public class Home extends Fragment {
         super.onDetach();
     }
 
-    private void setUpGraph() {
-        GraphView view = rootview.findViewById(R.id.home_graph);
+    private void setUpGraph(final String unit, int graphID ) {
+        GraphView view = rootview.findViewById(graphID);
         view.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
             public String formatLabel(double value, boolean isValueX) {
@@ -72,7 +72,7 @@ public class Home extends Fragment {
                     return super.formatLabel(value, isValueX) + "/18";
                 } else {
                     // show currency for y values
-                    return super.formatLabel(value, isValueX) + " W";
+                    return super.formatLabel(value, isValueX) + unit;
                 }
             }
         });
@@ -86,7 +86,8 @@ public class Home extends Fragment {
         });
         view.addSeries(points);
         view.setTitle("Year to Date Usage");
-        view.setTitleTextSize(10);
+        view.setTitleTextSize(90);
+        view.getViewport().setXAxisBoundsManual(true);
         view.getViewport().setMaxX(6);
         view.getViewport().setMinX(1);
     }

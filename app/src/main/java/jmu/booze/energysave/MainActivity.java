@@ -13,7 +13,11 @@ import android.widget.FrameLayout;
 
 import jmu.booze.energysave.fragments.DeviceListFragment;
 import jmu.booze.energysave.fragments.Home;
-import jmu.booze.energysave.fragments.Money;
+import jmu.booze.energysave.fragments.LeaderBoard;
+import jmu.booze.energysave.fragments.LeaderBoard;
+import jmu.booze.energysave.model.Department;
+import jmu.booze.energysave.model.DeviceCollection;
+import jmu.booze.energysave.model.LeaderBoardList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     transaction.commitNow();
                     return true;
                 case R.id.navigation_money:
-                    fragment = Money.newInstance();
+                    fragment = LeaderBoard.newInstance();
                     transaction.replace(R.id.fragment_holder, fragment);
                     transaction.commitNow();
                     return true;
@@ -66,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
         //Set default fragment
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().add(R.id.fragment_holder, Home.newInstance("", "")).commitNow();
+
+        LeaderBoardList list = LeaderBoardList.getInstance();
+        list.add(new Department("Acounting", 1));
+        list.add(new Department("Engineering", 2));
+        list.add(new Department("Marketing", 3));
+        list.add(new Department("Security", 4));
+        list.add(new Department("Software", 5));
     }
 
 }

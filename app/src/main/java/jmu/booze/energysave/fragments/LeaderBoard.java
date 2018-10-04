@@ -6,19 +6,24 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
+import jmu.booze.energysave.LeaderBoardAdapter;
 import jmu.booze.energysave.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Money#newInstance} factory method to
- * create an instance of this fragment.
  */
-public class Money extends Fragment {
+public class LeaderBoard extends Fragment {
 
 
-    public Money() {
+    private View rootView;
+
+    public LeaderBoard() {
         // Required empty public constructor
     }
 
@@ -29,8 +34,8 @@ public class Money extends Fragment {
      * @return A new instance of fragment Money.
      */
     // TODO: Rename and change types and number of parameters
-    public static Money newInstance() {
-        Money fragment = new Money();
+    public static LeaderBoard newInstance() {
+        LeaderBoard fragment = new LeaderBoard();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -45,8 +50,12 @@ public class Money extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_money, container, false);
+
+        rootView =  inflater.inflate(R.layout.leaderboard_fragment, container, false);
+        ListView listView = rootView.findViewById(R.id.leaderboard_list);
+        listView.setAdapter(new LeaderBoardAdapter(this.getContext(), R.id.leaderboard_list));
+
+        return rootView;
     }
 
 }
